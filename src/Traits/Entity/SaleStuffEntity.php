@@ -3,7 +3,6 @@
 
 namespace App\Traits\Entity;
 
-use App\Entity\SaleWeapon;
 use Symfony\Component\Validator\Constraints as Assert;
 
 trait SaleStuffEntity
@@ -13,7 +12,13 @@ trait SaleStuffEntity
      * @Assert\GreaterThanOrEqual(value="0", message="grade must be greater or equal than 0")
      * @Assert\LessThanOrEqual(value="3", message="grade must be lower or equal than 3")
      */
-    private $grade = 0;
+    private $grade;
+
+    /**
+     * @ORM\Column(type="smallint")
+     * @Assert\Choice(callback={"App\Model\StuffLevel", "getLevels"}, message="Choose a valid level")
+     */
+    private $level;
 
     /**
      * @return int|null

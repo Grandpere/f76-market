@@ -24,13 +24,20 @@ trait SaleItemEntity
      * @ORM\Column(type="integer")
      * @Assert\GreaterThanOrEqual(value="0", message="price must be greater or equal than 0")
      */
-    private $price = 0;
+    private $price;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\GreaterThanOrEqual(value="1", message="quantity must be greater or equal than 1")
      */
-    private $quantity = 1;
+    private $quantity;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $additionalInformation;
+
+    // TODO: imageFile
 
     /**
      * @return int|null
@@ -93,6 +100,25 @@ trait SaleItemEntity
     public function setQuantity(int $quantity): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAdditionalInformation() : ?string
+    {
+        return $this->additionalInformation;
+    }
+
+    /**
+     * @param $additionalInformation
+     * @return $this
+     */
+    public function setAdditionalInformation($additionalInformation): self
+    {
+        $this->additionalInformation = $additionalInformation;
 
         return $this;
     }
