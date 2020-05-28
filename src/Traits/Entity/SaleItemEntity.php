@@ -3,9 +3,13 @@
 
 namespace App\Traits\Entity;
 
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 trait SaleItemEntity
 {
+    use TimestampableEntity;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -15,18 +19,27 @@ trait SaleItemEntity
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\GreaterThanOrEqual(value="0", message="price must be greater or equal than 0")
      */
     private $price;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\GreaterThanOrEqual(value="1", message="quantity must be greater or equal than 1")
      */
     private $quantity;
+
+    public function __construct()
+    {
+        $this->price = 0;
+        $this->quantity = 1;
+    }
 
     /**
      * @return int|null
