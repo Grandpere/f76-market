@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Entity;
 
 use App\Repository\ItemRepository;
@@ -13,4 +14,5 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 class SaleItem
 {
     use SaleItemEntity;
+    use TimestampableEntity;
 }
