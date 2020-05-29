@@ -53,7 +53,7 @@ class LegendaryEffect
 
     /**
      * @ORM\Column(type="string", length=20)
-     * @Assert\Choice(callback="getTypes", message="Choose a valid type")
+     * @Assert\Choice(callback={"App\Model\Stuff", "getTypes"}, message="Choose a valid type")
      */
     private $type;
 
@@ -147,13 +147,5 @@ class LegendaryEffect
     public static function getCategories()
     {
         return ['PREFIX, MAJOR, MINOR'];
-    }
-
-    /**
-     * @return array
-     */
-    public static function getTypes()
-    {
-        return ['WEAPON, ARMOR'];
     }
 }

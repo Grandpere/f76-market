@@ -16,9 +16,15 @@ trait SaleStuffEntity
 
     /**
      * @ORM\Column(type="smallint")
-     * @Assert\Choice(callback={"App\Model\StuffLevel", "getLevels"}, message="Choose a valid level")
+     * @Assert\Choice(callback={"App\Model\Stuff", "getLevels"}, message="Choose a valid level")
      */
     private $level;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     * @Assert\Choice(callback={"App\Model\Stuff", "getTypes"}, message="Choose a valid type")
+     */
+    private $type;
 
     /**
      * @return int|null
@@ -35,6 +41,25 @@ trait SaleStuffEntity
     public function setGrade(int $grade): self
     {
         $this->grade = $grade;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     * @return $this
+     */
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
