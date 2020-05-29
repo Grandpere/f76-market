@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LegendaryEffectRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -56,6 +58,16 @@ class LegendaryEffect
      * @Assert\Choice(callback={"App\Model\Stuff", "getTypes"}, message="Choose a valid type")
      */
     private $type;
+
+    /**
+     * @ORM\OneToMany(targetEntity=SaleStuff::class, mappedBy="legendaryEffect01")
+     */
+    private $saleStuffs;
+
+    public function __construct()
+    {
+        $this->saleStuffs = new ArrayCollection();
+    }
 
     /**
      * @return int|null
@@ -139,6 +151,46 @@ class LegendaryEffect
         $this->type = $type;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|SaleStuff[]
+     */
+    public function getSaleStuffs(): Collection
+    {
+        return $this->saleStuffs;
+    }
+
+    public function addSaleStuff(SaleStuff $saleStuff): self
+    {
+        if (!$this->saleStuffs->contains($saleStuff)) {
+            $this->saleStuffs[] = $saleStuff;
+            $saleStuff->setLegendaryEffect01($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSaleStuff(SaleStuff $saleStuff): self
+    {
+        if ($this->saleStuffs->contains($saleStuff)) {
+            $this->saleStuffs->removeElement($saleStuff);
+            // set the owning side to null (unless already changed)
+            if ($saleStuff->getLegendaryEffect01() === $this) {
+                $saleStuff->setLegendaryEffect01(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * return full description => title : description
+     * @return string
+     */
+    public function getFullDescription()
+    {
+        return sprintf('%s : %s', $this->getTitle(), $this->getDescription());
     }
 
     /**

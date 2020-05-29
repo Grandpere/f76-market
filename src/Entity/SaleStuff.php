@@ -7,6 +7,7 @@ use App\Traits\Entity\SaleItemEntity;
 use App\Traits\Entity\SaleStuffEntity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SaleStuffRepository::class)
@@ -14,17 +15,86 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 class SaleStuff
 {
     use SaleItemEntity;
-    use SaleStuffEntity;
     use TimestampableEntity;
+
+    /**
+     * @ORM\Column(type="smallint")
+     * @Assert\Choice(callback={"App\Model\Stuff", "getLevels"}, message="Choose a valid level")
+     */
+    private $level;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     * @Assert\Choice(callback={"App\Model\Stuff", "getTypes"}, message="Choose a valid type")
+     */
+    private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=LegendaryEffect::class, inversedBy="saleStuffs")
+     */
+    private $legendaryEffect01;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=LegendaryEffect::class, inversedBy="saleStuffs")
+     * @Assert\
+     */
+    private $legendaryEffect02;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=LegendaryEffect::class, inversedBy="saleStuffs")
+     */
+    private $legendaryEffect03;
 
     public function __construct()
     {
         $this->quantity = 1;
     }
 
-    /* TODO:
-        Prefix : legendaryEffect01 (default null) in ArmorLegendaryEffect
-        Major : legendaryEffect02 (default null) in ArmorLegendaryEffect
-        Minor : legendaryEffect03 (default null) in ArmorLegendaryEffect
-    */
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getLegendaryEffect01(): ?LegendaryEffect
+    {
+        return $this->legendaryEffect01;
+    }
+
+    public function setLegendaryEffect01(?LegendaryEffect $legendaryEffect01): self
+    {
+        $this->legendaryEffect01 = $legendaryEffect01;
+
+        return $this;
+    }
+
+    public function getLegendaryEffect02(): ?LegendaryEffect
+    {
+        return $this->legendaryEffect02;
+    }
+
+    public function setLegendaryEffect02(?LegendaryEffect $legendaryEffect02): self
+    {
+        $this->legendaryEffect02 = $legendaryEffect02;
+
+        return $this;
+    }
+
+    public function getLegendaryEffect03(): ?LegendaryEffect
+    {
+        return $this->legendaryEffect03;
+    }
+
+    public function setLegendaryEffect03(?LegendaryEffect $legendaryEffect03): self
+    {
+        $this->legendaryEffect03 = $legendaryEffect03;
+
+        return $this;
+    }
 }

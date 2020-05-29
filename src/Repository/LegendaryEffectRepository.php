@@ -47,4 +47,23 @@ class LegendaryEffectRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * return LegendaryEffect[] filter by category (PREFIX, MAJOR, MINOR) & type (WEAPON, ARMOR)
+     * examples : all prefix legendary for weapon / all major legendary for armor / etc...
+     * @param $category
+     * @param $type
+     * @return mixed
+     */
+    public function findAllByCategoryAndType($category, $type)
+    {
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.category = :category')
+            ->andWhere('l.type = :type')
+            ->setParameter('category', $category)
+            ->setParameter('type', $type)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
