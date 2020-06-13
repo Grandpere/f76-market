@@ -36,7 +36,6 @@ class SaleStuff
 
     /**
      * @ORM\ManyToOne(targetEntity=LegendaryEffect::class, inversedBy="saleStuffs")
-     * @Assert\
      */
     private $legendaryEffect02;
 
