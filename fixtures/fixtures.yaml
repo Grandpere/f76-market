@@ -6,3 +6,15 @@ App\Entity\Item:
   Item_{.308_round, .38_round, .44_round, .45_round}:
     name: '<current()>'
     category: '@ItemCategory_ammunition'
+
+App\Entity\Weapon:
+  Weapon_1:
+    name: 'Rifle'
+    category: '@ItemCategory_weapon'
+    level: '1'
+
+App\Entity\Armor:
+  Armor_1:
+    name: 'Metal arm'
+    category: '@ItemCategory_armor'
+    level: '10'

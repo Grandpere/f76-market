@@ -3,13 +3,15 @@
 namespace App\Entity;
 
 use App\Contract\Item\ItemInterface;
-use App\Repository\ItemRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
- * @ORM\Entity(repositoryClass=ItemRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
  */
+// voir pour abstract BaseItem au lieu de l'interface car projet solo?
 class Item implements ItemInterface
 {
     use TimestampableEntity;
