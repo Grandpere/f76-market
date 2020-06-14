@@ -9,10 +9,9 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
  * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorColumn(name="category", type="string")
  */
-// voir pour abstract BaseItem au lieu de l'interface car projet solo?
-class Item implements ItemInterface
+abstract class Item implements ItemInterface
 {
     use TimestampableEntity;
 
@@ -33,12 +32,6 @@ class Item implements ItemInterface
      */
     // nullable = true sera retiré à la fin quand l'upload sera en place
     private $image;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=ItemCategory::class, inversedBy="items")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $category;
 
     public function getId(): ?int
     {
@@ -73,21 +66,6 @@ class Item implements ItemInterface
     {
         $this->image = $image;
 
-        return $this;
-    }
-
-    /**
-     * @see ItemInterface
-     * @return ItemCategory|null
-     */
-    public function getCategory(): ?ItemCategory
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?ItemCategory $category): self
-    {
-        $this->category = $category;
         return $this;
     }
 }

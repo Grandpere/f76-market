@@ -1,20 +1,63 @@
-App\Entity\ItemCategory:
-  ItemCategory_{weapon, armor, thrown_weapon, clothing, food_drink, chem, bobblehead, magazine, misc, treasure_map, plan, recipe, junk, mod, ammunition}:
-    name: '<current()>'
+#ItemCategory: thrown_weapon??
 
-App\Entity\Item:
-  Item_{.308_round, .38_round, .44_round, .45_round}:
+App\Entity\Ammunition:
+  Ammunition_{.308_round, .38_round, .44_round, .45_round}:
     name: '<current()>'
-    category: '@ItemCategory_ammunition'
-
-App\Entity\Weapon:
-  Weapon_1:
-    name: 'Rifle'
-    category: '@ItemCategory_weapon'
-    level: '1'
 
 App\Entity\Armor:
   Armor_1:
     name: 'Metal arm'
-    category: '@ItemCategory_armor'
     level: '10'
+
+App\Entity\Bobblehead:
+  Bobblehead_1:
+    name: 'Bobble1'
+
+App\Entity\Chem:
+  Chem_1:
+    name: 'Mentats'
+
+App\Entity\Drink:
+  Drink_1:
+    name: 'Purified water'
+
+App\Entity\Food:
+  Food_1:
+    name: 'Aster'
+
+App\Entity\Junk:
+  Junk_1:
+    name: 'Acid'
+
+App\Entity\Magazine:
+  Magazine_1:
+    name: 'Unstoppables#01'
+
+App\Entity\Misc:
+  Misc_1:
+    name: 'Nuclear keycard'
+
+App\Entity\Outfit:
+  Outfit_1:
+    name: 'Vault jumpsuit'
+
+App\Entity\Plan:
+  Plan_1:
+    name: 'Plan: Bow'
+
+App\Entity\Recipe:
+  Recipe_1:
+    name: 'Recipe: Bufftats'
+
+App\Entity\StuffMod:
+  StuffMod_1:
+    name: 'Mod#01'
+
+App\Entity\TreasureMap:
+  TreasureMap_1:
+    name: 'Mire treasure maps #01'
+
+App\Entity\Weapon:
+  Weapon_1:
+    name: 'Rifle'
+    level: '1'
