@@ -59,9 +59,6 @@ class LegendaryEffect
      */
     private $type;
 
-    /**
-     * @ORM\OneToMany(targetEntity=SaleStuff::class, mappedBy="legendaryEffect01")
-     */
     private $saleStuffs;
 
     public function __construct()
@@ -153,9 +150,7 @@ class LegendaryEffect
         return $this;
     }
 
-    /**
-     * @return Collection|SaleStuff[]
-     */
+    /*
     public function getSaleStuffs(): Collection
     {
         return $this->saleStuffs;
@@ -183,6 +178,7 @@ class LegendaryEffect
 
         return $this;
     }
+    */
 
     /**
      * return full description => title : description

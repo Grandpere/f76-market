@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\SaleItem;
+use App\Entity\ItemCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method SaleItem|null find($id, $lockMode = null, $lockVersion = null)
- * @method SaleItem|null findOneBy(array $criteria, array $orderBy = null)
- * @method SaleItem[]    findAll()
- * @method SaleItem[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ItemCategory|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ItemCategory|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ItemCategory[]    findAll()
+ * @method ItemCategory[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ItemRepository extends ServiceEntityRepository
+class ItemCategoryRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, SaleItem::class);
+        parent::__construct($registry, ItemCategory::class);
     }
 
     // /**
-    //  * @return SaleItem[] Returns an array of SaleItem objects
+    //  * @return ItemCategory[] Returns an array of ItemCategory objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ItemRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?SaleItem
+    public function findOneBySomeField($value): ?ItemCategory
     {
         return $this->createQueryBuilder('i')
             ->andWhere('i.exampleField = :val')

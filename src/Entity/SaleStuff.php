@@ -29,20 +29,11 @@ class SaleStuff
      */
     private $type;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=LegendaryEffect::class, inversedBy="saleStuffs")
-     */
+    /*
     private $legendaryEffect01;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=LegendaryEffect::class, inversedBy="saleStuffs")
-     */
     private $legendaryEffect02;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=LegendaryEffect::class, inversedBy="saleStuffs")
-     */
     private $legendaryEffect03;
+    */
 
     public function __construct()
     {
@@ -61,6 +52,7 @@ class SaleStuff
         return $this;
     }
 
+    /*
     public function getLegendaryEffect01(): ?LegendaryEffect
     {
         return $this->legendaryEffect01;
@@ -96,4 +88,5 @@ class SaleStuff
 
         return $this;
     }
+    */
 }

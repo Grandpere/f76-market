@@ -1,0 +1,8 @@
+App\Entity\ItemCategory:
+  ItemCategory_{weapon, armor, thrown_weapon, clothing, food_drink, chem, bobblehead, magazine, misc, treasure_map, plan, recipe, junk, mod, ammunition}:
+    name: '<current()>'
+
+App\Entity\Item:
+  Item_{.308_round, .38_round, .44_round, .45_round}:
+    name: '<current()>'
+    category: '@ItemCategory_ammunition'
