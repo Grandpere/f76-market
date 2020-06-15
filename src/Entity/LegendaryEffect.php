@@ -29,8 +29,8 @@ class LegendaryEffect
      * @Assert\Length(
      *     min = 6,
      *     max = 255,
-     *     minMessage = "Your content must be at least {{ limit }} characters long",
-     *     maxMessage = "Your content cannot be longer than {{ limit }} characters"
+     *     minMessage = "Your title must be at least {{ limit }} characters long",
+     *     maxMessage = "Your title cannot be longer than {{ limit }} characters"
      * )
      */
     private $title;
@@ -41,8 +41,8 @@ class LegendaryEffect
      * @Assert\Length(
      *     min = 6,
      *     max = 255,
-     *     minMessage = "Your content must be at least {{ limit }} characters long",
-     *     maxMessage = "Your content cannot be longer than {{ limit }} characters"
+     *     minMessage = "Your description must be at least {{ limit }} characters long",
+     *     maxMessage = "Your description cannot be longer than {{ limit }} characters"
      * )
      */
     private $description;

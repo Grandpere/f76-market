@@ -31,7 +31,12 @@ abstract class Item implements ItemInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     // nullable = true sera retiré à la fin quand l'upload sera en place
-    private $image;
+    protected $image;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $stackable = true;
 
     public function getId(): ?int
     {
@@ -67,5 +72,14 @@ abstract class Item implements ItemInterface
         $this->image = $image;
 
         return $this;
+    }
+
+    /**
+     * @see ItemInterface
+     * @return boolean
+     */
+    public function isStackable(): ?bool
+    {
+        return $this->stackable;
     }
 }
