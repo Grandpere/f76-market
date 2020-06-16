@@ -11,8 +11,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=LegendaryEffectRepository::class)
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="category", type="string")
+ * @ORM\DiscriminatorMap({"weapon_prefix" = "WeaponPrefix", "weapon_major" = "WeaponMajor", "weapon_minor" = "WeaponMinor", "armor_prefix" = "ArmorPrefix", "armor_major" = "ArmorMajor", "armor_minor" = "ArmorMinor"})
  */
-class LegendaryEffect
+abstract class LegendaryEffect
 {
     use TimestampableEntity;
 
@@ -29,11 +32,11 @@ class LegendaryEffect
      * @Assert\Length(
      *     min = 6,
      *     max = 255,
-     *     minMessage = "Your title must be at least {{ limit }} characters long",
-     *     maxMessage = "Your title cannot be longer than {{ limit }} characters"
+     *     minMessage = "Your name must be at least {{ limit }} characters long",
+     *     maxMessage = "Your name cannot be longer than {{ limit }} characters"
      * )
      */
-    private $title;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -47,64 +50,33 @@ class LegendaryEffect
      */
     private $description;
 
-    /**
-     * @ORM\Column(type="string", length=20)
-     * @Assert\Choice(callback="getCategories", message="Choose a valid category")
-     */
-    private $category;
-
-    /**
-     * @ORM\Column(type="string", length=20)
-     * @Assert\Choice(callback={"App\Model\Stuff", "getTypes"}, message="Choose a valid type")
-     */
-    private $type;
-
-    private $saleStuffs;
-
     public function __construct()
     {
-        $this->saleStuffs = new ArrayCollection();
+        $this->weapons = new ArrayCollection();
     }
 
-    /**
-     * @return int|null
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    /**
-     * @param string $title
-     * @return $this
-     */
-    public function setTitle(string $title): self
+    public function setName(string $name): self
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $description
-     * @return $this
-     */
     public function setDescription(string $description): self
     {
         $this->description = $description;
@@ -113,87 +85,11 @@ class LegendaryEffect
     }
 
     /**
-     * @return string|null
-     */
-    public function getCategory(): ?string
-    {
-        return $this->category;
-    }
-
-    /**
-     * @param string $category
-     * @return $this
-     */
-    public function setCategory(string $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     * @return $this
-     */
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /*
-    public function getSaleStuffs(): Collection
-    {
-        return $this->saleStuffs;
-    }
-
-    public function addSaleStuff(SaleStuff $saleStuff): self
-    {
-        if (!$this->saleStuffs->contains($saleStuff)) {
-            $this->saleStuffs[] = $saleStuff;
-            $saleStuff->setLegendaryEffect01($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSaleStuff(SaleStuff $saleStuff): self
-    {
-        if ($this->saleStuffs->contains($saleStuff)) {
-            $this->saleStuffs->removeElement($saleStuff);
-            // set the owning side to null (unless already changed)
-            if ($saleStuff->getLegendaryEffect01() === $this) {
-                $saleStuff->setLegendaryEffect01(null);
-            }
-        }
-
-        return $this;
-    }
-    */
-
-    /**
-     * return full description => title : description
+     * return full description => name : description
      * @return string
      */
     public function getFullDescription()
     {
-        return sprintf('%s : %s', $this->getTitle(), $this->getDescription());
-    }
-
-    /**
-     * @return array
-     */
-    public static function getCategories()
-    {
-        return ['PREFIX, MAJOR, MINOR'];
+        return sprintf('%s : %s', $this->getName(), $this->getDescription());
     }
 }

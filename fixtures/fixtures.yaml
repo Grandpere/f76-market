@@ -4,11 +4,6 @@ App\Entity\Ammunition:
   Ammunition_{.308_round, .38_round, .44_round, .45_round}:
     name: '<current()>'
 
-App\Entity\Armor:
-  Armor_1:
-    name: 'Metal arm'
-    level: '10'
-
 App\Entity\Bobblehead:
   Bobblehead_1:
     name: 'Bobble1'
@@ -37,10 +32,6 @@ App\Entity\Misc:
   Misc_1:
     name: 'Nuclear keycard'
 
-App\Entity\Outfit:
-  Outfit_1:
-    name: 'Vault jumpsuit'
-
 App\Entity\Plan:
   Plan_1:
     name: 'Plan: Bow'
@@ -57,7 +48,48 @@ App\Entity\TreasureMap:
   TreasureMap_1:
     name: 'Mire treasure maps #01'
 
+App\Entity\Outfit:
+  Outfit_1:
+    name: 'Vault jumpsuit'
+
+App\Entity\Armor:
+  Armor_1:
+    name: 'Metal arm'
+    level: '10'
+    grade: '0'
+
 App\Entity\Weapon:
   Weapon_1:
     name: 'Rifle'
     level: '1'
+    grade: '0'
+
+App\Entity\ArmorPrefix:
+  AP_{1..5}:
+    name: '<word()>'
+    description: '<sentence()>'
+
+App\Entity\ArmorMajor:
+  AM_{1..5}:
+    name: '<word()>'
+    description: '<sentence()>'
+
+App\Entity\ArmorMinor:
+  Am_{1..5}:
+    name: '<word()>'
+    description: '<sentence()>'
+
+App\Entity\WeaponPrefix:
+  WP_{1..5}:
+    name: '<word()>'
+    description: '<sentence()>'
+
+App\Entity\WeaponMajor:
+  WM_{1..5}:
+    name: '<word()>'
+    description: '<sentence()>'
+
+App\Entity\WeaponMinor:
+  wm_{1..5}:
+    name: '<word()>'
+    description: '<sentence()>'
