@@ -60,16 +60,14 @@ abstract class Equipment extends Stuff
         return $this;
     }
 
-    public function calculateGrade(): self
+    private function calculateGrade(): self
     {
-        $this->grade = count($this->legendaryEffects);
+        $this->grade = count($this->legendaryEffects); // TODO : regarder prefix, major et minor pour déterminer grade
+        // bloquer certains cas :
+        // avoir minor sans major
+        // avoir un major sans prefix
 
         return $this;
-    }
-
-    public function getLegendaryEffects()
-    {
-        return $this->legendaryEffects;
     }
 
     public function addLegendaryEffect(LegendaryEffect $legendaryEffect): self

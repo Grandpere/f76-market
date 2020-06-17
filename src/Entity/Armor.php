@@ -9,23 +9,55 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Armor extends Equipment
 {
+
+    /**
+     * @ORM\ManyToOne(targetEntity=ArmorPrefix::class, inversedBy="prefixedArmors")
+     */
     private $prefix;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=ArmorMajor::class, inversedBy="majoredArmors")
+     */
     private $major;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=ArmorMinor::class, inversedBy="minoredArmors")
+     */
     private $minor;
 
-
-    protected function getPrefix()
+    public function getPrefix(): ?ArmorPrefix
     {
-        // TODO: Implement getPrefix() method.
+        return $this->prefix;
     }
 
-    protected function getMajor()
+    public function setPrefix(?ArmorPrefix $prefix): self
     {
-        // TODO: Implement getMajor() method.
+        $this->prefix = $prefix;
+
+        return $this;
     }
 
-    protected function getMinor()
+    public function getMajor(): ?ArmorMajor
     {
-        // TODO: Implement getMinor() method.
+        return $this->major;
+    }
+
+    public function setMajor(?ArmorMajor $major): self
+    {
+        $this->major = $major;
+
+        return $this;
+    }
+
+    public function getMinor(): ?ArmorMinor
+    {
+        return $this->minor;
+    }
+
+    public function setMinor(?ArmorMinor $minor): self
+    {
+        $this->minor = $minor;
+
+        return $this;
     }
 }

@@ -1,5 +1,37 @@
 #ItemCategory: thrown_weapon??
 
+# legendary effect creation
+App\Entity\ArmorPrefix:
+  AP_{1..5}:
+    name: '<word()>'
+    description: '<sentence()>'
+
+App\Entity\ArmorMajor:
+  AM_{1..5}:
+    name: '<word()>'
+    description: '<sentence()>'
+
+App\Entity\ArmorMinor:
+  Am_{1..5}:
+    name: '<word()>'
+    description: '<sentence()>'
+
+App\Entity\WeaponPrefix:
+  WP_{1..5}:
+    name: '<word()>'
+    description: '<sentence()>'
+
+App\Entity\WeaponMajor:
+  WM_{1..5}:
+    name: '<word()>'
+    description: '<sentence()>'
+
+App\Entity\WeaponMinor:
+  Wm_{1..5}:
+    name: '<word()>'
+    description: '<sentence()>'
+
+# item creation
 App\Entity\Ammunition:
   Ammunition_{.308_round, .38_round, .44_round, .45_round}:
     name: '<current()>'
@@ -48,48 +80,26 @@ App\Entity\TreasureMap:
   TreasureMap_1:
     name: 'Mire treasure maps #01'
 
+# stuff creation
 App\Entity\Outfit:
   Outfit_1:
     name: 'Vault jumpsuit'
 
+# equipment creation
 App\Entity\Armor:
   Armor_1:
     name: 'Metal arm'
     level: '10'
     grade: '0'
+    prefix: '@AP_*'
+    major: '@AM_*'
+    minor: '@Am_*'
 
 App\Entity\Weapon:
   Weapon_1:
     name: 'Rifle'
     level: '1'
     grade: '0'
-
-App\Entity\ArmorPrefix:
-  AP_{1..5}:
-    name: '<word()>'
-    description: '<sentence()>'
-
-App\Entity\ArmorMajor:
-  AM_{1..5}:
-    name: '<word()>'
-    description: '<sentence()>'
-
-App\Entity\ArmorMinor:
-  Am_{1..5}:
-    name: '<word()>'
-    description: '<sentence()>'
-
-App\Entity\WeaponPrefix:
-  WP_{1..5}:
-    name: '<word()>'
-    description: '<sentence()>'
-
-App\Entity\WeaponMajor:
-  WM_{1..5}:
-    name: '<word()>'
-    description: '<sentence()>'
-
-App\Entity\WeaponMinor:
-  wm_{1..5}:
-    name: '<word()>'
-    description: '<sentence()>'
+    prefix: '@WP_*'
+    major: '@WM_*'
+    minor: '@Wm_*'

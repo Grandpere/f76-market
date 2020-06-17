@@ -2,18 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\LegendaryEffectRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=LegendaryEffectRepository::class)
- * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\Entity(repositoryClass="App\Repository\LegendaryEffectRepository")
+ * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="category", type="string")
- * @ORM\DiscriminatorMap({"weapon_prefix" = "WeaponPrefix", "weapon_major" = "WeaponMajor", "weapon_minor" = "WeaponMinor", "armor_prefix" = "ArmorPrefix", "armor_major" = "ArmorMajor", "armor_minor" = "ArmorMinor"})
  */
 abstract class LegendaryEffect
 {
@@ -49,11 +45,6 @@ abstract class LegendaryEffect
      * )
      */
     private $description;
-
-    public function __construct()
-    {
-        $this->weapons = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {

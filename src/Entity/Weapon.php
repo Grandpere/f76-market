@@ -9,61 +9,54 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Weapon extends Equipment
 {
-    // TODO: modifier les inversedBy pour les différents attributs légendaires
+    /**
+     * @ORM\ManyToOne(targetEntity=WeaponPrefix::class, inversedBy="prefixedWeapons")
+     */
     private $prefix;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=WeaponMajor::class, inversedBy="majoredWeapons")
+     */
     private $major;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=WeaponMinor::class, inversedBy="minoredWeapons")
+     */
     private $minor;
 
-    protected function getPrefix()
-    {
-        // TODO: Implement getPrefix() method.
-    }
-
-    protected function getMajor()
-    {
-        // TODO: Implement getMajor() method.
-    }
-
-    protected function getMinor()
-    {
-        // TODO: Implement getMinor() method.
-    }
-
-    /*
-    public function getPrefix(): ?LegendaryEffect
+    public function getPrefix(): ?WeaponPrefix
     {
         return $this->prefix;
     }
 
-    public function setPrefix(?LegendaryEffect $prefix): self
+    public function setPrefix(?WeaponPrefix $prefix): self
     {
         $this->prefix = $prefix;
 
         return $this;
     }
 
-    public function getMajor(): ?LegendaryEffect
+    public function getMajor(): ?WeaponMajor
     {
         return $this->major;
     }
 
-    public function setMajor(?LegendaryEffect $major): self
+    public function setMajor(?WeaponMajor $major): self
     {
         $this->major = $major;
 
         return $this;
     }
 
-    public function getMinor(): ?LegendaryEffect
+    public function getMinor(): ?WeaponMinor
     {
         return $this->minor;
     }
 
-    public function setMinor(?LegendaryEffect $minor): self
+    public function setMinor(?WeaponMinor $minor): self
     {
         $this->minor = $minor;
 
         return $this;
     }
-    */
 }
