@@ -3,38 +3,30 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
+use App\Validator\Constraints as CustomAssert;
+use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * @CustomAssert\EquipmentLegendaryEffects
+ */
 abstract class Equipment extends Stuff
 {
-    // legendaryEffects => prefix, major, minor or none
-    // grade => count legendaryEffects
-
     // TODO : type weapons
     // Ballistic, Submachine guns, Rifles, Shotguns, Pipe, Bows, Heavy, Energy, Plasma, Radiation, Other
     // Explosive (Heavy, Thrown), Melee (One H, Two H, Unarmed)
 
-    // abstract protected method($variable);
-
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Choice(callback="getLevels", message="Choose a valid level")
      */
     protected $level;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\PositiveOrZero
      */
     protected $grade;
-
-    protected $legendaryEffects;
-
-    public function __construct()
-    {
-        parent::__construct();
-        $this->legendaryEffects = new ArrayCollection();
-    }
 
     public function getLevel(): ?int
     {
@@ -63,4 +55,13 @@ abstract class Equipment extends Stuff
     abstract public function getPrefix();
     abstract public function getMajor();
     abstract public function getMinor();
+
+    /**
+     * return an level array
+     * @return array
+     */
+    public static function getLevels()
+    {
+        return [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+    }
 }

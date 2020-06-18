@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Contract\Item\ItemInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
@@ -24,6 +25,13 @@ abstract class Item implements ItemInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min = 6,
+     *     max = 255,
+     *     minMessage = "Name must be at least {{ limit }} characters long",
+     *     maxMessage = "Name cannot be longer than {{ limit }} characters"
+     * )
      */
     protected $name;
 

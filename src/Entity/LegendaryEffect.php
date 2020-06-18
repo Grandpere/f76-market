@@ -28,8 +28,8 @@ abstract class LegendaryEffect
      * @Assert\Length(
      *     min = 6,
      *     max = 255,
-     *     minMessage = "Your name must be at least {{ limit }} characters long",
-     *     maxMessage = "Your name cannot be longer than {{ limit }} characters"
+     *     minMessage = "Name must be at least {{ limit }} characters long",
+     *     maxMessage = "Name cannot be longer than {{ limit }} characters"
      * )
      */
     private $name;
@@ -40,8 +40,8 @@ abstract class LegendaryEffect
      * @Assert\Length(
      *     min = 6,
      *     max = 255,
-     *     minMessage = "Your description must be at least {{ limit }} characters long",
-     *     maxMessage = "Your description cannot be longer than {{ limit }} characters"
+     *     minMessage = "Description must be at least {{ limit }} characters long",
+     *     maxMessage = "Description cannot be longer than {{ limit }} characters"
      * )
      */
     private $description;

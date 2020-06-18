@@ -7,10 +7,12 @@ use App\Entity\Equipment;
 
 class EquipmentChecker
 {
-    private $grade = 0;
+    private $grade;
 
     public function calculateGrade(Equipment $equipment)
     {
+        $this->grade = 0;
+
         // prevent grade calculation if minor without major and major without prefix
         if(null !== $equipment->getPrefix()) {
             $this->grade += 1;
