@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 abstract class Equipment extends Stuff
 {
-    // TODO : type weapons
+    // TODO : type weapons for filter legendary effect forbidden with some type but doesn't using with this application
     // Ballistic, Submachine guns, Rifles, Shotguns, Pipe, Bows, Heavy, Energy, Plasma, Radiation, Other
     // Explosive (Heavy, Thrown), Melee (One H, Two H, Unarmed)
 
