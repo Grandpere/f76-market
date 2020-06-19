@@ -5,6 +5,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Validator\Constraints as CustomAssert;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -19,12 +20,14 @@ abstract class Equipment extends Stuff
     /**
      * @ORM\Column(type="integer")
      * @Assert\Choice(callback="getLevels", message="Choose a valid level")
+     * @Groups({"equipment:read", "equipment:write"})
      */
     protected $level;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\PositiveOrZero
+     * @Groups({"equipment:read", "equipment:read"})
      */
     protected $grade;
 

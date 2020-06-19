@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Contract\Item\ItemInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -20,6 +21,7 @@ abstract class Item implements ItemInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"item:read"})
      */
     protected $id;
 
@@ -32,17 +34,20 @@ abstract class Item implements ItemInterface
      *     minMessage = "Name must be at least {{ limit }} characters long",
      *     maxMessage = "Name cannot be longer than {{ limit }} characters"
      * )
+     * @Groups({"item:read", "item:write"})
      */
     protected $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"item:read", "item:write"})
      */
     // nullable = true sera retiré à la fin quand l'upload sera en place
     protected $image;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"item:read", "item:write"})
      */
     protected $stackable = true;
 
