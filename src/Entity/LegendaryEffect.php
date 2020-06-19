@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
+// repository pour les enfants comme fait pour les enfants d'item
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LegendaryEffectRepository")
  * @ORM\InheritanceType("JOINED")
