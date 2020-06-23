@@ -21,6 +21,7 @@ abstract class LegendaryEffect
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"legendary:read"})
      */
     private $id;
 
@@ -33,6 +34,7 @@ abstract class LegendaryEffect
      *     minMessage = "Name must be at least {{ limit }} characters long",
      *     maxMessage = "Name cannot be longer than {{ limit }} characters"
      * )
+     * @Groups({"legendary:read", "legendary:write"})
      */
     private $name;
 
@@ -45,6 +47,7 @@ abstract class LegendaryEffect
      *     minMessage = "Description must be at least {{ limit }} characters long",
      *     maxMessage = "Description cannot be longer than {{ limit }} characters"
      * )
+     * @Groups({"legendary:read", "legendary:write"})
      */
     private $description;
 

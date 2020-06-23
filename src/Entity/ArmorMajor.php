@@ -10,7 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArmorMajorRepository")
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"legendary:read"}},
+ *     denormalizationContext={"groups"={"legendary:write"}}
+ * )
  */
 class ArmorMajor extends LegendaryEffect
 {

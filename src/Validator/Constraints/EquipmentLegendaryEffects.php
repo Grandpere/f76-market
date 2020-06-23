@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class EquipmentLegendaryEffects extends Constraint
 {
-    public $message = "";
+    public $message = "This property cannot be null if it's children are not null";
 
     public function getTargets()
     {
