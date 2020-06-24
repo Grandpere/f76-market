@@ -83,6 +83,7 @@ abstract class LegendaryEffect
     /**
      * return full description => name : description
      * @return string
+     * @Groups({"legendary:read"})
      */
     public function getFullDescription()
     {
