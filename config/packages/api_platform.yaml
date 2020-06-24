@@ -1,4 +1,7 @@
 api_platform:
+    title: 'Unofficial Fallout76 Marketplace API'
+    description: 'Unofficial Fallout76 marketplace API'
+    version: '0.0.1'
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     patch_formats:
