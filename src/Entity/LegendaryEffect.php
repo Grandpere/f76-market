@@ -2,16 +2,17 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-// repository pour les enfants comme fait pour les enfants d'item
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LegendaryEffectRepository")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="category", type="string")
+ * @ApiResource()
  */
 abstract class LegendaryEffect
 {

@@ -9,8 +9,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WeaponRepository")
  * @ApiResource(
- *     normalizationContext={"groups"={"item:read", "equipment:read", "weapon:read"}},
- *     denormalizationContext={"groups"={"item:write", "equipment:write", "weapon:write"}}
+ *     normalizationContext={"groups"={"item:read", "equipment:read", "weapon:read"}, "swagger_definition_name"="Read"},
+ *     denormalizationContext={"groups"={"item:write", "equipment:write", "weapon:write"}, "swagger_definition_name"="Write"}
  * )
  */
 class Weapon extends Equipment

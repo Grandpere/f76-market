@@ -8,8 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\StuffModRepository")
  * @ApiResource(
- *     normalizationContext={"groups"={"item:read"}},
- *     denormalizationContext={"groups"={"item:write"}}
+ *     normalizationContext={"groups"={"item:read"}, "swagger_definition_name"="Read"},
+ *     denormalizationContext={"groups"={"item:write"}, "swagger_definition_name"="Write"}
  * )
  */
 class StuffMod extends Item

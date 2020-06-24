@@ -11,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WeaponMajorRepository")
  * @ApiResource(
- *     normalizationContext={"groups"={"legendary:read"}},
- *     denormalizationContext={"groups"={"legendary:write"}}
+ *     normalizationContext={"groups"={"legendary:read"}, "swagger_definition_name"="Read"},
+ *     denormalizationContext={"groups"={"legendary:write"}, "swagger_definition_name"="Write"}
  * )
  */
 class WeaponMajor extends LegendaryEffect
